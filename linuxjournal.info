@@ -2,4 +2,4 @@ name = Linux Journal
 description = A demonstration installation profile for my Linux Journal article.
 core = 7.x
 files[] = linuxjournal.profile
-dependencies[] = admin_menu
+# dependencies[] = admin_menu
