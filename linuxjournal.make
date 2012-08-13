@@ -11,6 +11,13 @@ projects[admin_menu][download][type] = git
 projects[admin_menu][download][url] = http://git.drupal.org/project/admin_menu.git
 projects[admin_menu][download][branch] = 7.x-3.x
 
+projects[omega_tools][type] = module
+projects[omega_tools][subdir] = contrib
+projects[omega_tools][version] = 3.0-rc4
+projects[omega_tools][download][type] = git
+projects[omega_tools][download][url] = http://git.drupal.org/project/omega_tools.git
+projects[omega_tools][download][branch] = 7.x-3.x
+
 ; projects[toolbar_admin_menu][type] = module
 ; projects[toolbar_admin_menu][subdir] = contrib
 ; projects[toolbar_admin_menu][version] = 1.0
