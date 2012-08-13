@@ -9,3 +9,10 @@ projects[admin_menu][version] = 3.0-rc3
 projects[admin_menu][download][type] = git
 projects[admin_menu][download][url] = http://git.drupal.org/project/admin_menu.git
 projects[admin_menu][download][branch] = 7.x-3.x
+
+projects[toolbar_admin_menu][type] = module
+projects[toolbar_admin_menu][subdir] = contrib
+projects[toolbar_admin_menu][version] = 1.0
+projects[toolbar_admin_menu][download][type] = git
+projects[toolbar_admin_menu][download][url] = http://git.drupalcode.org/project/toolbar_admin_menu.git
+projects[toolbar_admin_menu][download][branch] = 7.x-1.x
