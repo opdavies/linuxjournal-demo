@@ -11,7 +11,10 @@ dependencies[] = help
 dependencies[] = menu
 dependencies[] = path
 dependencies[] = php
+dependencies[] = shortcut
 dependencies[] = taxonomy
+dependencies[] = toolbar
 
 ; Contributed modules
 dependencies[] = admin_menu
+dependencies[] = toolbar_admin_menu
