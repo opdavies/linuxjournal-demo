@@ -8,5 +8,3 @@ dependencies[] = dblog
 
 ; Contributed modules
 dependencies[] = admin_menu
-
-files[] = linuxjournal.profile
