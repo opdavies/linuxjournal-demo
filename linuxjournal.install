@@ -1,0 +1,18 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the Linux Journal installation
+ * profile.
+ */
+
+/**
+ * Implements hook_install().
+ *
+ * Run the hook_install() function from the minimal profile as part of this
+ * profile.
+ */
+function linuxjournal_install() {
+  include_once DRUPAL_ROOT . '/profiles/minimal/minimal.install';
+  minimal_install();
+}
