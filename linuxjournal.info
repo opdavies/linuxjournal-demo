@@ -1,5 +1,12 @@
 name = Linux Journal
 description = A demonstration installation profile for my Linux Journal article.
 core = 7.x
+
+; Core modules
+dependencies[] = block
+dependencies[] = dblog
+
+; Contributed modules
+dependencies[] = admin_menu
+
 files[] = linuxjournal.profile
-# dependencies[] = admin_menu
