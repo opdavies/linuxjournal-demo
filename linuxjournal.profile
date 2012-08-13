@@ -1,5 +1,8 @@
 <?php
 
+// The name of the site, taken from the URL.
+define('LINUXJOURNAL_SITE_NAME', $_SERVER['SERVER_NAME']);
+
 /**
  * Implements hook_form_alter().
  *
@@ -7,7 +10,7 @@
  */
 function linuxjournal_form_install_configure_form_alter(&$form, $form_state) {
   // Set a default site name and email address.
-  $form['site_information']['site_name']['#default_value'] = t('Linux Journal Demo');
+  $form['site_information']['site_name']['#default_value'] = LINUXJOURNAL_SITE_NAME;
   $form['site_information']['site_mail']['#default_value'] = 'oliver@oliverdavies.co.uk';
 
   // Set a default username and email address.
