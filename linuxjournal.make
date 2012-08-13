@@ -11,6 +11,20 @@ projects[admin_menu][download][type] = git
 projects[admin_menu][download][url] = http://git.drupal.org/project/admin_menu.git
 projects[admin_menu][download][branch] = 7.x-3.x
 
+projects[ctools][type] = module
+projects[ctools][subdir] = contrib
+projects[ctools][version] = 1.1
+projects[ctools][download][type] = git
+projects[ctools][download][url] = http://git.drupal.org/project/ctools.git
+projects[ctools][download][branch] = 7.x-1.x
+
+projects[devel][type] = module
+projects[devel][subdir] = contrib
+projects[devel][version] = 1.3
+projects[devel][download][type] = git
+projects[devel][download][url] = http://git.drupal.org/project/devel.git
+projects[devel][download][branch] = 7.x-1.x
+
 projects[omega_tools][type] = module
 projects[omega_tools][subdir] = contrib
 projects[omega_tools][version] = 3.0-rc4

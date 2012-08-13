@@ -13,6 +13,25 @@
  * profile.
  */
 function linuxjournal_install() {
+  $site_name = $_SERVER['SERVER_NAME'];
+
+  // Automatically create a subtheme of Omega.
+  $subtheme = new stdClass;
+  $subtheme->new = TRUE;
+  $subtheme->name = $site_name;
+  $subtheme->machine_name = $site_name;
+  $subtheme->starterkit = 'starterkit_omega_html5';
+  $subtheme->base = 'alpha';
+  $subtheme->status = TRUE;
+  $subtheme->default = TRUE;
+  // $subtheme->automated = $values['automated'];
+  $subtheme->destination = 'sites/all/themes/' . $site_name;
+  $subtheme->path = 'temporary://omega-tools/' . $site_name . '-' . substr(hash('sha256', serialize($subtheme) . microtime()), 0, 8);
+
+  $result = omega_tools_subtheme_create($subtheme);
+  dsm($result);
+
+
   include_once DRUPAL_ROOT . '/profiles/minimal/minimal.install';
   minimal_install();
 }
