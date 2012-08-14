@@ -27,6 +27,30 @@ function linuxjournal_install() {
   variable_set('admin_theme', $admin_theme);
   variable_set('node_admin_theme', '1');
 
+  // Create new user roles for Developers, Administrators, Editors and Publishers.
+  $roles = array('Developer', 'Administrator', 'Editor', 'Publisher');
+  foreach ($roles as $weight => $name) {
+    $role = new stdClass;
+    $role->name = $name;
+    $role->weight = $weight + 2, // New roles must have at least a weight of 2.
+
+    // Save the new role.
+    user_role_save($role);
+
+    if ($name == 'Developer') {
+      // Give the Developer role all permissions.
+      user_role_grant_permissions($role->rid, array_keys(module_invoke_all('permission')));
+
+      // Set this as the administrator role.
+      variable_set('user_admin_role', $role->rid);
+
+      // Assign user 1 the Developer role.
+      db_insert('users_roles')
+        ->fields(array('uid' => 1, 'rid' => $role->rid))
+        ->execute();
+    }
+  }
+
   // Add text formats.
   $text_formats['filtered_html'] = array(
     'format' => 'filtered_html',
