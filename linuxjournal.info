@@ -1,6 +1,7 @@
 name = Linux Journal
 description = A demonstration installation profile for my Linux Journal article.
 core = 7.x
+theme = garland
 
 ; Core modules
 dependencies[] = block
