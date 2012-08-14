@@ -13,6 +13,7 @@
  * profile.
  */
 function linuxjournal_install() {
+  // Utilise the hook_install() implementation from the minimal profile.
   include_once DRUPAL_ROOT . '/profiles/minimal/minimal.install';
   minimal_install();
 
@@ -25,4 +26,6 @@ function linuxjournal_install() {
     ->execute();
   variable_set('admin_theme', $admin_theme);
   variable_set('node_admin_theme', '1');
+
+
 }
