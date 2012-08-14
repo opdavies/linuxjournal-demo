@@ -19,3 +19,4 @@ dependencies[] = admin_menu
 dependencies[] = ctools
 dependencies[] = devel
 dependencies[] = omega_tools
+dependencies[] = wysiwyg

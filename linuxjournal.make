@@ -39,9 +39,21 @@ projects[omega_tools][download][branch] = 7.x-3.x
 ; projects[toolbar_admin_menu][download][url] = http://git.drupalcode.org/project/toolbar_admin_menu.git
 ; projects[toolbar_admin_menu][download][branch] = 7.x-1.x
 
+projects[wysiwyg][type] = module
+projects[wysiwyg][subdir] = contrib
+projects[wysiwyg][version] = 2.1
+projects[wysiwyg][download][type] = git
+projects[wysiwyg][download][url] = http://git.drupal.org/project/wysiwyg.git
+projects[wysiwyg][download][branch] = 7.x-2.x
+
 ; Themes =======================================================================
 projects[omega][type] = theme
 projects[omega][version] = 3.1
 projects[omega][download][type] = git
 projects[omega][download][url] = http://git.drupal.org/project/omega.git
 projects[omega][download][branch] = 7.x-3.x
+
+; Libraries ====================================================================
+libraries[tinymce][download][type] = git
+libraries[tinymce][download][url] = https://github.com/tinymce/tinymce.git
+libraries[tinymce][download][branch] = 3.4.x
