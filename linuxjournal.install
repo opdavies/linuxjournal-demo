@@ -32,7 +32,7 @@ function linuxjournal_install() {
   foreach ($roles as $weight => $name) {
     $role = new stdClass;
     $role->name = $name;
-    $role->weight = $weight + 2, // New roles must have at least a weight of 2.
+    $role->weight = $weight + 2; // New roles must have at least a weight of 2.
 
     // Save the new role.
     user_role_save($role);
