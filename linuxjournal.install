@@ -101,7 +101,7 @@ function linuxjournal_install() {
       'custom' => 1,
       'modified' => 1,
       'locked' => 0,
-    );
+    )
   );
 
   foreach ($types as $type) {
