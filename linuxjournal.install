@@ -27,32 +27,8 @@ function linuxjournal_install() {
   variable_set('admin_theme', $admin_theme);
   variable_set('node_admin_theme', '1');
 
-  // Create new user roles for Developers, Administrators, Editors and Publishers.
-  $roles = array('Developer', 'Administrator', 'Editor', 'Publisher');
-  foreach ($roles as $weight => $name) {
-    $role = new stdClass;
-    $role->name = $name;
-    $role->weight = $weight + 2; // New roles must have at least a weight of 2.
-
-    // Save the new role.
-    user_role_save($role);
-
-    if ($name == 'Developer') {
-      // Give the Developer role all permissions.
-      user_role_grant_permissions($role->rid, array_keys(module_invoke_all('permission')));
-
-      // Set this as the administrator role.
-      variable_set('user_admin_role', $role->rid);
-
-      // Assign user 1 the Developer role.
-      db_insert('users_roles')
-        ->fields(array('uid' => 1, 'rid' => $role->rid))
-        ->execute();
-    }
-  }
-
   // Add text formats.
-  $text_formats['filtered_html'] = array(
+  $filtered_html_format = array(
     'format' => 'filtered_html',
     'name' => 'Filtered HTML',
     'weight' => 0,
@@ -67,7 +43,7 @@ function linuxjournal_install() {
         'weight' => 1,
         'status' => 1,
       ),
-        // Line break filter.
+      // Line break filter.
       'filter_autop' => array(
         'weight' => 2,
         'status' => 1,
@@ -79,7 +55,10 @@ function linuxjournal_install() {
       ),
     ),
   );
-  $text_formats['full_html'] = array(
+  $filtered_html_format = (object) $filtered_html_format;
+  filter_format_save($filtered_html_format);
+
+  $full_html_format = array(
     'format' => 'full_html',
     'name' => 'Full HTML',
     'weight' => 1,
@@ -89,7 +68,7 @@ function linuxjournal_install() {
         'weight' => 0,
         'status' => 1,
       ),
-        // Line break filter.
+      // Line break filter.
       'filter_autop' => array(
         'weight' => 1,
         'status' => 1,
@@ -101,15 +80,16 @@ function linuxjournal_install() {
       ),
     ),
   );
-  $text_formats['raw_html'] = array(
+  $full_html_format = (object) $full_html_format;
+  filter_format_save($full_html_format);
+
+  $raw_html_format = array(
     'format' => 'raw_html',
     'name' => 'Raw HTML',
     'weight' => 2,
   );
-  foreach ($text_formats as $text_format) {
-    $text_format = (object) $text_format;
-    filter_format_save($text_format);
-  }
+  $raw_html_format = (object) $raw_html_format;
+  filter_format_save($raw_html_format);
 
   // Add the TinyMCE editor to the Filtered HTML text format.
   $tinymce_settings = array(
@@ -166,4 +146,34 @@ function linuxjournal_install() {
   );
 
   drupal_write_record('wysiwyg', $record);
+
+  // Create new user roles for Developers, Administrators, Editors and Publishers.
+  $roles = array('Developer', 'Administrator', 'Editor', 'Publisher');
+  foreach ($roles as $weight => $name) {
+    $role = new stdClass;
+    $role->name = $name;
+    $role->weight = $weight + 2; // New roles must have at least a weight of 2.
+
+    // Save the new role.
+    user_role_save($role);
+
+    if ($name == 'Developer') {
+      // Give the Developer role all permissions.
+      user_role_grant_permissions($role->rid, array_keys(module_invoke_all('permission')));
+
+      // Set this as the administrator role.
+      variable_set('user_admin_role', $role->rid);
+
+      // Assign user 1 the Developer role.
+      db_insert('users_roles')
+        ->fields(array('uid' => 1, 'rid' => $role->rid))
+        ->execute();
+    }
+  }
+
+  // Assign some default permissions.
+  $filtered_html_permission = filter_permission_name($filtered_html_format);
+  $raw_html_permission = filter_permission_name($raw_html_format);
+  user_role_grant_permissions(DRUPAL_ANONYMOUS_RID, array('access content', $filtered_html_permission));
+  user_role_grant_permissions(DRUPAL_AUTHENTICATED_RID, array('access content', 'access administration menu', 'access devel information', $filtered_html_permission, $raw_html_permission));
 }
