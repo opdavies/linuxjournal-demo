@@ -18,5 +18,6 @@ dependencies[] = taxonomy
 dependencies[] = admin_menu
 dependencies[] = ctools
 dependencies[] = devel
+dependencies[] = libraries
 dependencies[] = omega_tools
 dependencies[] = wysiwyg

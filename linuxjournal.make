@@ -25,6 +25,13 @@ projects[devel][download][type] = git
 projects[devel][download][url] = http://git.drupal.org/project/devel.git
 projects[devel][download][branch] = 7.x-1.x
 
+projects[libraries][type] = module
+projects[libraries][subdir] = contrib
+projects[libraries][version] = 2.0
+projects[libraries][download][type] = git
+projects[libraries][download][url] = http://git.drupal.org/project/libraries.git
+projects[libraries][download][branch] = 7.x-2.x
+
 projects[omega_tools][type] = module
 projects[omega_tools][subdir] = contrib
 projects[omega_tools][version] = 3.0-rc4
